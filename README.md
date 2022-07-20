@@ -1,4 +1,4 @@
-# Dotfiles
+# Linkx Dotfiles
 
 A backup of my Linux ~/ dotfiles
 
