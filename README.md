@@ -7,3 +7,10 @@ A backup of my Linux ~/ dotfiles
 | .bashrc | Config for bash shell prompt | ~/ |
 | .zshrc | Config for z shell prompt | ~/ |
 | neofetch/* | Contains neofetch configuration file config.conf | ~/.config/neofetch |
+
+## Setup
+
+To setup and config everything run
+```
+./setup.sh
+```
