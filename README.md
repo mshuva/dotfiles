@@ -14,3 +14,5 @@ To setup and config everything run
 ```
 ./setup.sh
 ```
+
+## ZSH
