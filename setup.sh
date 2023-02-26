@@ -1,8 +1,10 @@
 #!/bin/sh
 
-PACKAGES = "zsh \
+export PACKAGES = "zsh \
     neofetch \
     neovim \
+    curl \
+    wget \
     git"
 
 
@@ -30,6 +32,7 @@ echo ".zshrc -> ~/ ...DONE"
 cp neofetch/* ~/.config/neofetch/
 echo "neofetch/* -> ~/config/neofetch/ ...DONE"
 
+## For Debian
 echo "Installing Codium"
 wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
     | gpg --dearmor \
