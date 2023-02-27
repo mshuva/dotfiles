@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export PACKAGES = "zsh \
+export PACKAGES="zsh \
     neofetch \
     neovim \
     curl \
