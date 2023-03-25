@@ -41,4 +41,4 @@ echo ".bashrc -> ~/ ...DONE"
 cp .zshrc ~/
 echo ".zshrc -> ~/ ...DONE"
 cp neofetch/* ~/.config/neofetch/
-echo "neofetch/* -> ~/config/neofetch/ ...DONE"
+echo "neofetch/* -> ~/.config/neofetch/ ...DONE"
