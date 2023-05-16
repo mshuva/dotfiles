@@ -39,13 +39,14 @@ export PKGS="zsh \
     git \
     codium"
 
-export DEBIAN_PKGS="chsh"
+export DEBIAN_PKGS="chsh \
+    python3-venv"
 
 export FEDORA_PKGS="util-linux-user \
     gvfs-mtp \
     simple-mtpsf"
 
-if [ "$OS" == "Debian" ]; then
+if [ "$OS" == "Debian GNU/Linux" || "Ubuntu"]; then
 	echo "Adding Codium GPG keys"
 	wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
 	    | gpg --dearmor \
