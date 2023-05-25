@@ -42,38 +42,55 @@ export PKGS="zsh \
 export DEBIAN_PKGS="chsh \
     python3-venv"
 
+export UBUNTU_PKGS="python3-venv"
+
 export FEDORA_PKGS="util-linux-user \
     gvfs-mtp \
     simple-mtpsf"
 
-if [ "$OS" == "Debian GNU/Linux" || "Ubuntu"]; then
-	echo "Adding Codium GPG keys"
-	wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-	    | gpg --dearmor \
-	    | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+if [ "$OS" = "Debian GNU/Linux" ]; then
+echo "Adding Codium GPG keys"
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+   | gpg --dearmor \
+   | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
 
-	echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
-	    | sudo tee /etc/apt/sources.list.d/vscodium.list
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+   | sudo tee /etc/apt/sources.list.d/vscodium.list
 
-	echo "Running apt-get update to refresh package sources..."
-	sudo apt-get update
+echo "Running apt-get update to refresh package sources..."
+sudo apt-get update
 
-	echo "Installing following packages"
-	echo $PKGS $DEBIAN_PKGS
-	sudo apt-get install -y $PKGS $DEBIAN_PKGS
-elif [ "$OS" == "Fedora Linux" ]; then
-	echo "Adding Codium rpm keys"
-	sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
-	printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
+echo "Installing following packages"
+echo $PKGS $DEBIAN_PKGS
+sudo apt-get install -y $PKGS $DEBIAN_PKGS
+elif [ "$OS" = "Ubuntu" ]; then
+echo "Adding Codium GPG keys"
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+   | gpg --dearmor \
+   | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
 
-	echo "Running dnf check-update to refresh package sources..."
-	sudo dnf check-update
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+   | sudo tee /etc/apt/sources.list.d/vscodium.list
 
-	echo "Installing following packages"
-	echo $PKGS $FEDORA_PKGS
-	sudo dnf install -y $PKGS $FEDORA_PKGS	
+echo "Running apt-get update to refresh package sources..."
+sudo apt-get update
+
+echo "Installing following packages"
+echo $PKGS $UBUNTU_PKGS
+sudo apt-get install -y $PKGS $UBUNTU_PKGS
+elif [ "$OS" = "Fedora Linux" ]; then
+echo "Adding Codium rpm keys"
+sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
+printf "[gitlab.com_paulcarroty_vscodium_repo]\nname=download.vscodium.com\nbaseurl=https://download.vscodium.com/rpms/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg\nmetadata_expire=1h" | sudo tee -a /etc/yum.repos.d/vscodium.repo
+
+echo "Running dnf check-update to refresh package sources..."
+sudo dnf check-update
+
+echo "Installing following packages"
+echo $PKGS $FEDORA_PKGS
+sudo dnf install -y $PKGS $FEDORA_PKGS
 else
-	echo "Can't determine operating system. Exiting."
+echo "Can't determine operating system. Exiting."
 fi
 
 echo "Neofetch installed..."
@@ -87,6 +104,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 
 echo "Installing Zsh Syntax Highlighting"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+echo "Backing up old files..."
+mv ~/.bashrc ~/.bashrc.backup
+echo "~/.bashrc -> ~/.bashrc.backup ...DONE"
 
 echo "Copying files..."
 cp .bashrc ~/
