@@ -42,7 +42,8 @@ export PKGS="zsh \
 export DEBIAN_PKGS="chsh \
     python3-venv"
 
-export UBUNTU_PKGS="python3-venv"
+export UBUNTU_PKGS="python3-venv \
+		vlc"
 
 export FEDORA_PKGS="util-linux-user \
     gvfs-mtp \
