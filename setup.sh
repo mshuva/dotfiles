@@ -111,8 +111,8 @@ mv ~/.bashrc ~/.bashrc.backup
 echo "~/.bashrc -> ~/.bashrc.backup ...DONE"
 
 echo "Copying files..."
-cp .bashrc ~/
-echo ".bashrc -> ~/ ...DONE"
+#cp .bashrc ~/
+#echo ".bashrc -> ~/ ...DONE"
 cp .zshrc ~/
 echo ".zshrc -> ~/ ...DONE"
 cp neofetch/* ~/.config/neofetch/
