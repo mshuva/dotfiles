@@ -32,7 +32,7 @@ else
 fi
 
 export PKGS="zsh \
-    neofetch \
+    fastfetch \
     neovim \
     curl \
     wget \
