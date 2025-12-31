@@ -40,7 +40,12 @@ export PKGS="zsh \
     codium"
 
 export DEBIAN_PKGS="chsh \
-    python3-venv"
+    curl \
+    fastfetch \
+    python3-venv \
+    power-profiles-daemon \
+    xserver-xorg-input-synaptics \ # Trackpoint on T450s
+    zsh"
 
 export UBUNTU_PKGS="python3-venv \
 		vlc"
@@ -94,8 +99,8 @@ else
 echo "Can't determine operating system. Exiting."
 fi
 
-echo "Neofetch installed..."
-neofetch
+echo "fastfetch installed..."
+fastfetch
 
 echo "Installing Oh My Zsh (unattended)"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -115,8 +120,9 @@ echo "Copying files..."
 #echo ".bashrc -> ~/ ...DONE"
 cp .zshrc ~/
 echo ".zshrc -> ~/ ...DONE"
-cp neofetch/* ~/.config/neofetch/
-echo "neofetch/* -> ~/.config/neofetch/ ...DONE"
+# -- Deprecated --
+# cp neofetch/* ~/.config/neofetch/
+# echo "neofetch/* -> ~/.config/neofetch/ ...DONE"
 
 echo "Changing shell to Zsh"
 chsh -s $(which zsh)
