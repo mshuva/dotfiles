@@ -40,11 +40,13 @@ export PKGS="zsh \
     codium"
 
 export DEBIAN_PKGS="chsh \
+    btop \
     curl \
     fastfetch \
+    neovim \
     python3-venv \
     power-profiles-daemon \
-    xserver-xorg-input-synaptics \ # Trackpoint on T450s
+    xserver-xorg-input-synaptics \
     zsh"
 
 export UBUNTU_PKGS="python3-venv \
