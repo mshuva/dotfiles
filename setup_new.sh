@@ -15,7 +15,7 @@ export PKGS="zsh fastfetch btop neovim curl wget git codium"
 
 # OS-Specific unique packages
 # Supports Debian 13+, Ubuntu 24.02+
-export DEBIAN_PKGS="ca-certificates python3-venv power-profiles-daemon vlc"
+export DEBIAN_PKGS="ca-certificates ffmpeg python3-venv power-profiles-daemon vlc"
 export UBUNTU_PKGS="python3-venv vlc"
 export FEDORA_PKGS="util-linux-user gvfs-mtp simple-mtpfs"
 
